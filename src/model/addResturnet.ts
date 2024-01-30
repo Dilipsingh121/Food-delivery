@@ -28,16 +28,16 @@ export class resturentsDetails extends Document{
         closingTime: string;
       }[];
 
-      @Prop()
-      menuItems: {
-        name: string;
-        description: string;
-        price: number;
-        category: string;
-      }[];
+      // @Prop()
+      // menuItems: {
+      //   name: string;
+      //   description: string;
+      //   price: number;
+      //   category: string;
+      // }[];
 
     @Prop()
-    photos: string[];
+    file: string[];
 
   @Prop()
   ratings: {
@@ -48,6 +48,12 @@ export class resturentsDetails extends Document{
 
   @Prop()
   ownerId: string;
+
+  @Prop()
+  location: {
+    latitude: String;
+    logitude: String;
+  }[]
 
 }
 export const resturentsSchema = SchemaFactory.createForClass(resturentsDetails);

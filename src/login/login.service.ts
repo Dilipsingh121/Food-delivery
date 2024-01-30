@@ -5,7 +5,7 @@ import { login } from 'src/model/login';
 import { loginDto } from './loginDto/login.dto';
 import { UserRegistration } from 'src/model/userRegistration';
 import * as bcrypt from 'bcrypt';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthService } from 'src/middleware/auth.service';
 import { JwtService } from '@nestjs/jwt';
 import crypto from 'crypto';
 

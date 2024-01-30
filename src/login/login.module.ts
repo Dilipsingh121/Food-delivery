@@ -4,7 +4,7 @@ import { LoginService } from './login.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { login, loginSchema } from 'src/model/login';
 import { UserRegistration, UserSchema } from 'src/model/userRegistration';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthService } from 'src/middleware/auth.service';
 import { JwtModule, JwtService } from '@nestjs/jwt/dist';
 import * as dotenv from 'dotenv';
 dotenv.config();

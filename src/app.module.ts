@@ -5,10 +5,14 @@ import { DatabaseModule } from './database/database.module';
 import { RegistrationController } from './registration/registration.controller';
 import { RegistrationModule } from './registration/registration.module';
 import { LoginModule } from './login/login.module';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './middleware/auth.module';
+import { AddResturentsModule } from './Resturentowner/add-resturents/add-resturents.module';
+import { UploadsModule } from './middleware/uploads/uploads.module';
+import { ViewAllResturentModule } from './consumer/view-all-resturent/view-all-resturent.module';
+import { ItemDetailsModule } from './Resturentowner/item-details/item-details.module';
 
 @Module({
-  imports: [DatabaseModule, RegistrationModule, LoginModule, AuthModule],
+  imports: [DatabaseModule, RegistrationModule, LoginModule, AuthModule,AddResturentsModule,UploadsModule,ViewAllResturentModule,ItemDetailsModule],
   controllers: [AppController, RegistrationController],
   providers: [AppService],
 })

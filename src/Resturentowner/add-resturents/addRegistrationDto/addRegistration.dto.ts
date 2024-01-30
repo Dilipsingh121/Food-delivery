@@ -16,24 +16,35 @@ class operatingHours{
     closingTime:string;
 }
 
-class menuItems{
+
+class location{
     @IsNotEmpty()
     @IsString()
-    name:string;
+    latitude: String;
 
     @IsNotEmpty()
     @IsString()
-    description:string;
-
-    @IsNotEmpty()
-    @IsString()
-    price:number;
-
-    @IsNotEmpty()
-    @IsString()
-    category:string;
-
+    logitude: String;
 }
+
+// class menuItems{
+//     @IsNotEmpty()
+//     @IsString()
+//     name:string;
+
+//     @IsNotEmpty()
+//     @IsString()
+//     description:string;
+
+//     @IsNotEmpty()
+//     @IsString()
+//     price:number;
+
+//     @IsNotEmpty()
+//     @IsString()
+//     category:string;
+
+// }
 
 class ratings{
     @IsNotEmpty()
@@ -66,7 +77,7 @@ export class addRegistratinDto{
 
     @IsNotEmpty()
     @IsString()
-    contectNumber:string;
+    contectNumber:number;
 
     @IsNotEmpty()
     @IsString()
@@ -78,13 +89,18 @@ export class addRegistratinDto{
     @Type(() => operatingHours)
     operatingHours: operatingHours[];
 
+    // @IsNotEmpty()
+    // @ValidateNested({each:true})
+    // @Type(() => menuItems)
+    // menuItems:menuItems[];
+
     @IsNotEmpty()
     @ValidateNested({each:true})
-    @Type(() => menuItems)
-    menuItems:menuItems[];
+    @Type(() => location)
+    location:location[];
 
     @IsArray()
-    photos: string[];
+    file: string[];
 
     @IsNotEmpty()
     @ValidateNested({each:true})
@@ -94,6 +110,10 @@ export class addRegistratinDto{
     @IsNotEmpty()
     @IsString()
     ownerId:string;
+
+    @IsNotEmpty()
+    @IsString()
+    resturentId:string
 
 
 }
