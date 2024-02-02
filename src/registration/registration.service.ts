@@ -13,7 +13,6 @@ export class RegistrationService {
         const hashedPassword = await bcrypt.hash(userRegistrationDto.password, 10);
         userRegistrationDto.password = hashedPassword
         const newuser = new this.userModel(userRegistrationDto)
-        // console.log(newuser)
         return newuser.save()
 
     }

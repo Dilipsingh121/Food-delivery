@@ -10,9 +10,11 @@ import { AddResturentsModule } from './Resturentowner/add-resturents/add-resture
 import { UploadsModule } from './middleware/uploads/uploads.module';
 import { ViewAllResturentModule } from './consumer/view-all-resturent/view-all-resturent.module';
 import { ItemDetailsModule } from './Resturentowner/item-details/item-details.module';
+import { ItemsDetailsModule } from './consumer/items-details/items-details.module';
+import { AddItemsModule } from './consumer/add-items/add-items.module';
 
 @Module({
-  imports: [DatabaseModule, RegistrationModule, LoginModule, AuthModule,AddResturentsModule,UploadsModule,ViewAllResturentModule,ItemDetailsModule],
+  imports: [DatabaseModule, RegistrationModule, LoginModule, AuthModule,AddResturentsModule,UploadsModule,ViewAllResturentModule,ItemDetailsModule,ItemsDetailsModule,AddItemsModule],
   controllers: [AppController, RegistrationController],
   providers: [AppService],
 })

@@ -4,14 +4,7 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class itemDetails extends Document{
-    // @Prop()
-    // ratings: {
-    //   userId: string; 
-    //   rating: number;
-    //   review: string;
-    // }[];
-
-
+  
       @Prop()
       menuItems: {
         name: string;

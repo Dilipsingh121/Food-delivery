@@ -5,6 +5,9 @@ import { JwtModule, JwtService } from '@nestjs/jwt';
 import { UploadsModule } from './uploads/uploads.module';
 import * as dotenv from 'dotenv';
 import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './strategy/jwt.strategy';
+import { LoginService } from 'src/login/login.service';
+import { UserRegistration } from 'src/model/userRegistration';
 dotenv.config();
 
 
@@ -16,7 +19,7 @@ dotenv.config();
       signOptions: { expiresIn: '1h' },
     }),
     UploadsModule],
-  providers: [AuthService],
+  providers: [ AuthService],
   controllers: [AuthController],
   exports:[AuthService,PassportModule]
 })

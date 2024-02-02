@@ -8,6 +8,7 @@ import * as bcrypt from 'bcrypt';
 import { AuthService } from 'src/middleware/auth.service';
 import { JwtService } from '@nestjs/jwt';
 import crypto from 'crypto';
+import { access } from 'fs';
 
 
 @Injectable()
@@ -18,30 +19,28 @@ export class LoginService {
     async getAllUser(loginDto: loginDto) {
         try {
             const allUsers = await this.userModel.find({ email: loginDto.email });
-    
-            if (allUsers.length > 0) { 
+            if (allUsers.length > 0) {
                 const passwordCompare = await bcrypt.compare(loginDto.password, allUsers[0].password);
-                
-                if (passwordCompare) { 
-                    const usersWithToken = await Promise.all(allUsers.map(async (user) => {
-                        const token = await this.authService.generateToken(user.id);
-                        return { ...user.toObject(), token };
-                    }));
-    
-                    console.log("=========================25", usersWithToken);
-                    return usersWithToken;
+                if (passwordCompare) {
+                    let token = await this.jwtService.signAsync(loginDto, { secret: process.env.JWT_KEY }) 
+                    let accessToken = {
+                        accessToken: token
+                    }
+                    return accessToken;
                 } else {
                     return 'Incorrect password';
                 }
             } else {
                 return 'User Not found';
             }
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             throw err;
         }
     }
+
     
+ 
     
 
 }

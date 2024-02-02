@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { resturentsDetails } from 'src/model/addResturnet';
 import { addRegistratinDto } from './addRegistrationDto/addRegistration.dto';
 import { UploadsService } from 'src/middleware/uploads/uploads.service';
+import { updateResturentsDetails } from './addRegistrationDto/updateResturents.dto';
 
 @Injectable()
 export class AddResturentsService {
@@ -17,10 +18,21 @@ export class AddResturentsService {
             // console.log("===========================",addResturentsDetails)
             return addResturentsDetails.save()
         }catch(error){
-            console.log(error)
+            throw new Error(`Failed to create item: ${error.message}`);     
         }
        
 
     }
+
+    async updateResturents(id:string,updateResturentsDto:updateResturentsDetails){
+        console.log(id,updateResturentsDto)
+        try{
+            let getUpdatedDetails = await this.addResturents.findByIdAndUpdate(id,updateResturentsDto,{new : true })
+            return getUpdatedDetails
+        }catch(error){
+            throw new Error(`Failed to update item: ${error.message}`);        
+        }
+        }
+      
 
 }

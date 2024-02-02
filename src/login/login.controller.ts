@@ -8,6 +8,10 @@ export class LoginController {
 
     @Post()
     async getAlluser(@Body() loginDto:loginDto){
-    return this.loginService.getAllUser(loginDto)
+        try{
+            return this.loginService.getAllUser(loginDto)
+        }catch(error){
+            throw new Error(`Failed getAlluser :${error.message}`)
+        }
     }
 }
